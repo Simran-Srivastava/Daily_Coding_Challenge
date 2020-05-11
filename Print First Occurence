@@ -1,0 +1,41 @@
+'''
+Given a string containing only lower case letters ,print first occurrence of all the letters present in that order only.
+
+Input :
+
+Test cases, t
+string ,s
+Output :
+
+Desired Output
+
+Constraint :
+
+string length <=200
+
+SAMPLE INPUT 
+2
+aasdvasvavda
+sajhags
+SAMPLE OUTPUT 
+asdv
+sajhg
+'''
+t=int(input())
+for k in range(t):    
+    s=input()
+    arr=[]
+    n=len(s)
+    for i in str(s):
+        arr.append(i)
+    #print(arr)
+    for i in range(n):
+        if arr[i]!='$':
+            print(arr[i],end='')
+            j=i+1
+            #print(i,j)
+            while j<n:
+                if arr[i]==arr[j]:
+                    arr[j]='$'
+                j+=1
+    print()
