@@ -1,0 +1,43 @@
+'''
+David ha invitado a su novia Patricia al cine a ver la última película de Ciro Guerra, después de mucho tiempo han acordado ver la película de las 7 PM. Cuando David se dispone a pagar se da cuenta que el serial del billete es un número capicúa por lo cual decide no usarlo y finalmente Patricia debe pagar el cine.
+
+Un número capicúa se refiere a cualquier número que se lee igual de izquierda a derecha.
+
+Para este problema se requiere verificar si un número es capicúa.
+
+Entrada
+
+La primera línea consiste en el número de casos T tal que  . Posteriormente habrán T líneas, cada una con un número N, tal que  . Se asegura que los números no poseen ceros a la izquierda.
+
+Salida
+
+Se deben imprimir T líneas, en cada línea se debe imprimir “YES” si el número es capicúa o “NO” en otro caso, todo sin comillas.
+
+SAMPLE INPUT 
+5
+11111
+8785878
+51875
+224614
+547745
+SAMPLE OUTPUT 
+YES
+YES
+NO
+NO
+YES
+'''
+
+t=int(input())
+for i in range(t):
+    n=int(input())
+    rev=0
+    m=n
+    while n>0:
+        r=n%10
+        rev=rev*10+r 
+        n=n//10
+    if rev==m:
+        print('YES')
+    else:
+        print('NO')
