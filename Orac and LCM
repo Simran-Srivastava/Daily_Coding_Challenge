@@ -1,0 +1,66 @@
+'''For the multiset of positive integers s={s1,s2,…,sk}, define the Greatest Common Divisor (GCD) and Least Common Multiple (LCM) of s as follow:
+
+gcd(s) is the maximum positive integer x, such that all integers in s are divisible on x.
+lcm(s) is the minimum positive integer x, that divisible on all integers from s.
+For example, gcd({8,12})=4,gcd({12,18,6})=6 and lcm({4,6})=12. Note that for any positive integer x, gcd({x})=lcm({x})=x.
+
+Orac has a sequence a with length n. He come up with the multiset t={lcm({ai,aj}) | i<j}, and asked you to find the value of gcd(t) for him. In other words, you need to calculate the GCD of LCMs of all pairs of elements in the given sequence.
+
+Input
+The first line contains one integer n (2≤n≤100000).
+
+The second line contains n integers, a1,a2,…,an (1≤ai≤200000).
+
+Output
+Print one integer: gcd({lcm({ai,aj}) | i<j}).
+
+Examples
+inputCopy
+2
+1 1
+outputCopy
+1
+inputCopy
+4
+10 24 40 80
+outputCopy
+40
+inputCopy
+10
+540 648 810 648 720 540 594 864 972 648
+outputCopy
+54
+Note
+For the first example, t={lcm({1,1})}={1}, so gcd(t)=1.
+
+For the second example, t={120,40,80,120,240,80}, and it's not hard to see that gcd(t)=40.
+
+'''
+#Brute Force
+def gcd(a,b):
+    if a==0:
+        return b
+    return gcd(b%a,a)
+def lcm(a,b):
+    return (a*b)//gcd(a,b)
+n=int(input())
+s=input()
+arr=list(map(int, s.split(' ')))
+brr=[]
+if n<=2:
+    for i in range(n-1):
+        brr.append(lcm(arr[i], arr[i+1]))
+    print(brr[0])
+else:
+    for i in range(n-1):
+        brr.append(lcm(arr[i],arr[i+1]))
+    x=len(brr)
+    q=999999
+    #print(brr)
+    for i in range(x-1):
+        for j in range(i+1,x):
+            c=gcd(brr[i],brr[j])
+            #print(c)
+            if c<q:
+                q=c
+    print(q)
