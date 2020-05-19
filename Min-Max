@@ -1,0 +1,60 @@
+'''Given A Series Of N Positive Integers a1,a2,a3........an. , Find The Minimum And Maximum Values That Can Be Calculated By Summing Exactly N-1 Of The N Integers. Then Print The Respective Minimum And Maximum Values As A Single Line Of Two Space-Separated Long Integers.
+
+Input Format
+
+First Line Take Input Value Of N
+
+Second Line Take Input N Space Separated Integer Value
+
+Output Format
+
+Two Space Separated Value ( One Maximum Sum And One Minimum Sum )
+
+Constraints
+
+0 < N < 100001
+0 <= ai < 1013
+SAMPLE INPUT 
+5
+1 2 3 4 5
+SAMPLE OUTPUT 
+10 14'''
+def mergeSort(arr):
+    if len(arr) >1: 
+        mid = len(arr)//2
+        L = arr[:mid]
+        R = arr[mid:]
+        mergeSort(L)
+        mergeSort(R)
+        i = j = k = 0
+        while i < len(L) and j < len(R): 
+            if L[i] < R[j]: 
+                arr[k] = L[i] 
+                i+=1
+            else: 
+                arr[k] = R[j] 
+                j+=1
+            k+=1
+        while i < len(L): 
+            arr[k] = L[i] 
+            i+=1
+            k+=1
+          
+        while j < len(R): 
+            arr[k] = R[j] 
+            j+=1
+            k+=1
+    return arr
+
+n=int(input())
+a=input()
+arr=list(map(int, a.split(' ')))
+arr=mergeSort(arr)
+min=0
+max=0
+#print(arr)
+for i in range(1, len(arr)):
+    max=max+arr[i]
+for j in range(len(arr)-1):
+    min=min+arr[j]
+print(str(min)+" "+str(max))
