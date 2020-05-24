@@ -1,0 +1,42 @@
+'''
+You will be given an array of integers. All of the integers except one occur twice. That one is unique in the array.
+
+Given an array of integers, find and print the unique element.
+
+For example, , the unique element is .
+
+Function Description
+
+Complete the lonelyinteger function in the editor below. It should return the integer which occurs only once in the input array.
+
+lonelyinteger has the following parameter(s):
+
+a: an array of integers
+Input Format
+
+The first line contains a single integer, , denoting the number of integers in the array.
+The second line contains  space-separated integers describing the values in .
+
+Constraints
+
+It is guaranteed that  is an odd number and that there is one unique element.
+, where .
+Output Format
+
+Print the unique integer in the array.'''
+
+
+#Python Code
+
+def lonelyinteger(a):
+    for i in range(len(a)-1):
+        for j in range(i+1,len(a)):
+            if a[i]!=-1 and a[i]==a[j]:
+                a[j]=-1
+                a[i]=-1
+                break
+            #print(a)
+    #print(a)
+    for k in range(len(a)):
+        if a[k]!=-1:
+            return a[k]
