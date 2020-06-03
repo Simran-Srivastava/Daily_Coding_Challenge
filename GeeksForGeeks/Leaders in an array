@@ -1,0 +1,17 @@
+#Python Code
+t=int(input())
+for u in range(t):
+    n=int(input())
+    arr=list(map(int, input().split( )))
+    max_el=arr[-1]
+    l=[]
+    b=[]
+    l.append(arr[-1])
+    for i in range(n-2, -1, -1):
+        if arr[i]>=max_el:
+            l.append(arr[i])
+            max_el=arr[i]
+    b=l[::-1]
+    for i in range(len(b)):
+        print(b[i], end=' ')
+    print()
